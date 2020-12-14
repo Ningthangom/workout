@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/workout_db", {
 });
 
 let workoutSeed = [
-  {
+  {  
     day: new Date().setDate(new Date().getDate()-10),
     exercises: [
       {
