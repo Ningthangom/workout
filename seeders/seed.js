@@ -1,12 +1,36 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require("../models/model");
 
-mongoose.connect("mongodb://localhost/workout_db", {
+ mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://Ningthanom:Ningthangom123@cluster0.dm7f2.mongodb.net/workout_db?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
-});
+})
+ .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log('Mongo Error:'));
+
+/*  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout_db", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}); 
+ */
+
+/* mongoose
+  .connect(
+    'mongodb://localhost/workout_db',
+    { useNewUrlParser: true,
+      useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log('Mongo Error:')); */
+
+
+
 
 let workoutSeed = [
   {  
@@ -136,3 +160,4 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
