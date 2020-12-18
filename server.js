@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const {MongoClient} = require('mongodb');
 
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -35,11 +36,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://Ningthanom:Ningthango
   .catch(err => console.log('Mongo Error:'));
 
   // route
+// routes
+app.use(require("./routes/frontend_routes.js"));
+app.use(require("./routes/data_routes.js"));
 
-
-app.get("/api/workouts", function (req, res) {
-  res.send();
-})
 
 
 app.listen(PORT, () => {
