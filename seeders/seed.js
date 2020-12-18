@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models/model");
+let Workout = require("../models/model");
 
  mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://Ningthanom:Ningthangom123@cluster0.dm7f2.mongodb.net/workout_db?retryWrites=true&w=majority", {
   useNewUrlParser: true,
@@ -149,12 +149,22 @@ let workoutSeed = [
     ]
   }
 ];
-
-/* db.Workout.deleteMany({})
-  .then(() => */ 
-  db.Workout.insertMany(workoutSeed)
+/* 
+ Workout.deleteMany({})
+  .then(() => 
+  Workout.insertMany(workoutSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+ */
+  Workout.insertMany(workoutSeed)
+  .then(res => {
+    console.log(res);
     process.exit(0);
   })
   .catch(err => {
