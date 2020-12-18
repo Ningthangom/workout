@@ -162,7 +162,10 @@ let workoutSeed = [
     process.exit(1);
   });
  */
-  Workout.insertMany(workoutSeed)
+
+Workout.deleteMany({})
+.then(()=>
+  Workout.collection.insertMany(workoutSeed))
   .then(res => {
     console.log(res);
     process.exit(0);
