@@ -47,15 +47,26 @@ router.put('/api/workouts/:id', ({ body, params }, res) => {
     });
 
 router.get('/api/workouts/range', (req, res) => {
-    
 
-    });
+    Workout.find({})
+    .then(data => {
+        res.json(data)
+    }).catch (err => {
+        res.json(err)
+    })
+
+})
+ 
+
+router.delete('/api/workouts', ({ body }, res) => {
+  Workout.findByIdAndDelete(body.id)
+  .then(()=> {
+      res.json(true)
+  }).catch((err) => {
+      res.json(err)
+  })
+
+});
 
 
- router.delete('/api/workouts', ({ body }, res) => {
-
-
-    });
-
-
-    module.exports = router;
+module.exports = router;
